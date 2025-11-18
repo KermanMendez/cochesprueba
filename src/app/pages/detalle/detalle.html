@@ -1,16 +1,47 @@
-<div class="detalle-container">
-	<img class="detalle-foto" [src]="coche?.fotoURL || 'https://via.placeholder.com/400x220?text=Sin+Foto'" [alt]="(coche?.marca || '') + ' ' + (coche?.modelo || '')" />
-	<div class="detalle-marca">{{ coche?.marca }}</div>
-	<div class="detalle-modelo">{{ coche?.modelo }}</div>
-	<div class="detalle-tipos">
-		@for (tipo of coche?.tipo; track tipo) {
-			<span class="detalle-tipo">{{ tipo }}</span>
-		}
-	</div>
-	<div class="detalle-info">
-		<div><span class="detalle-label">Matrícula:</span> <span class="detalle-valor">{{ coche?.matricula }}</span></div>
-		<div><span class="detalle-label">Kilometraje:</span> <span class="detalle-valor">{{ coche?.kms }} km</span></div>
-		<div><span class="detalle-label">Precio:</span> <span class="detalle-valor">{{ coche?.precio }}€</span></div>
-	</div>
+
+<div class="detalle-pantalla">
+    <div class="detalle-col">
+        <a class="detalle-volver-btn" [routerLink]="['/coches']">Volver</a>
+        <div class="detalle-container">
+            <img class="detalle-foto" [src]="coche?.fotoURL || 'https://via.placeholder.com/400x220?text=Sin+Foto'" [alt]="(coche?.marca || '') + ' ' + (coche?.modelo || '')" />
+            <div class="detalle-marca">{{ coche?.marca }}</div>
+            <div class="detalle-modelo">{{ coche?.modelo }}</div>
+            <div class="detalle-tipos">
+                @for (tipo of coche?.tipo; track tipo) {
+                    <span class="detalle-tipo">{{ tipo }}</span>
+                }
+            </div>
+            <div class="detalle-info">
+                <div><span class="detalle-label">Matrícula:</span> <span class="detalle-valor">{{ coche?.matricula }}</span></div>
+                <div><span class="detalle-label">Kilometraje:</span> <span class="detalle-valor">{{ coche?.kms }} km</span></div>
+                <div><span class="detalle-label">Precio:</span> <span class="detalle-valor">{{ coche?.precio }}€</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="editar-col">
+        <button class="editar-btn" (click)="mostrarFormulario = !mostrarFormulario">
+            {{ mostrarFormulario ? 'Ocultar edición' : 'Editar coche' }}
+        </button>
+        @if (mostrarFormulario) {
+            <div class="formulario-edicion">
+                <h3 class="form-title">Editar coche</h3>
+                <form [formGroup]="cocheForm">
+                    <label for="id">ID</label><br>
+                    <input id="id" formControlName="id" type="number"/><br><br>
+                    <label for="marca">Marca</label><br>
+                    <input id="marca" formControlName="marca" type="text"/><br><br>
+                    <label for="modelo">Modelo</label><br>
+                    <input id="modelo" formControlName="modelo" type="text"/><br><br>
+                    <label for="matricula">Matrícula</label><br>
+                    <input id="matricula" formControlName="matricula" type="text"/><br><br>
+                    <label for="kms">Kilometraje</label><br>
+                    <input id="kms" formControlName="kms" type="number"/><br><br>
+                    <label for="precio">Precio</label><br>
+                    <input id="precio" formControlName="precio" type="number"/><br><br>
+                    <button (click)="onSubmit()">Modify</button>
+                </form>
+            </div>
+        }
+    </div>
 </div>
 
