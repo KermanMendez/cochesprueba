@@ -56,6 +56,24 @@
   background: #0d47a1;
 }
 
+.eliminar-btn {
+  margin: 2rem auto 1.5rem auto;
+  display: block;
+  padding: 0.7rem 2rem;
+  font-size: 1.1rem;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+  transition: background 0.2s;
+}
+.eliminar-btn:hover {
+  background: #0d47a1;
+}
+
 .formulario-edicion {
   width: 100%;
   max-width: 420px;

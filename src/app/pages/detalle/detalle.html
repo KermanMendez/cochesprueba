@@ -19,6 +19,7 @@
         </div>
     </div>
     <div class="editar-col">
+        <button class="eliminar-btn" (click)="deleteCocheById(coche?.id + '')">Eliminar</button>
         <button class="editar-btn" (click)="mostrarFormulario = !mostrarFormulario">
             {{ mostrarFormulario ? 'Ocultar edición' : 'Editar coche' }}
         </button>

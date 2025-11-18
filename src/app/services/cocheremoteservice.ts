@@ -43,7 +43,7 @@ export class Cocheremoteservice {
     return this.http.put<ICoche>(`${this.apiUrl}/${id}`, data);
   }
 
-  deleteCocheById(id: number): Observable<ICoche> {
+  deleteCocheById(id: string): Observable<ICoche> {
     return this.http.delete<ICoche>(`${this.apiUrl}/${id}`);
   }
 

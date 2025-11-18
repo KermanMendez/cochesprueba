@@ -22,6 +22,7 @@ export class Detalle {
   private activatedRoute = inject(ActivatedRoute);
   private cocheService = inject(Cocheremoteservice);
   private fb = inject(FormBuilder);
+  private router = inject(Router);
 
   constructor(){
     this.activatedRoute.params.subscribe((params) =>{
@@ -79,5 +80,20 @@ export class Detalle {
         }
       });
     }
+  }
+
+  deleteCocheById(id: string ){
+    this.cocheService.deleteCocheById(id).subscribe({
+      next: () => {
+        console.log(`Coche with id ${id} deleted successfully.`);
+      },
+      error: (error) => {
+        console.error(`Error deleting coche with id ${id}:`, error);
+      },
+      complete: () => {
+        this.router.navigate(['/coches']);
+        console.log(`Delete operation for coche with id ${id} completed.`);
+      }
+    });
   }
 }
