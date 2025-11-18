@@ -1,0 +1,53 @@
+
+
+<div class="coches-layout">
+    <aside class="coches-menu">
+        <label for="categoria-select">Categoría:</label>
+        <select id="categoria-select" #categoria (change)="getCochesByType(categoria.value)">
+            <option value="">Todas</option>
+            <option value="SUV">SUV</option>
+            <option value="SEDAN">Sedán</option>
+            <option value="HATCHBACK">Hatchback</option>
+            <option value="DEPORTIVO">Deportivo</option>
+            <option value="ELECTRICO">Eléctrico</option>
+            <option value="DIESEL">Diésel</option>
+            <option value="HIBRIDO">Híbrido</option>
+
+        </select>
+        <label for="marca-select">Marca:</label>
+        <select id="marca-select" #marca (change)="getCochesByMarca(marca.value)">
+            <option value="">Todas</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Ford">Ford</option>
+            <option value="BMW">BMW</option>
+            <option value="Audi">Audi</option>
+            <option value="Honda">Honda</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Nissan">Nissan</option>
+        </select>
+        <button class="menu-btn" (click)="getFeaturedCoches()">Featured</button>
+    </aside>
+    <main class="coches-main">
+        <h2 class="coches-header">SELECCIÓN</h2>
+        @if (coches.length > 0) {
+            <div class="coches-grid">
+                @for (coche of coches; track coche.id) {
+                    <div class="coche-item" [routerLink]="['/detalle', coche.id]">
+                        <img class="coche-foto" [src]="coche.fotoURL || 'https://via.placeholder.com/320x180?text=Sin+Foto'" [alt]="coche.marca + ' ' + coche.modelo" />
+                        <div class="coche-info">
+                            <div class="coche-marca">{{ coche.marca }}</div>
+                            <div class="coche-modelo">{{ coche.modelo }}</div>
+                            <div class="coche-tipo">
+                                @for (tipo of coche.tipo; track tipo; let last = $last) {
+                                    <span>{{ tipo }}</span>@if (!last) {, }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        } @else {
+            <div>No hay coches disponibles.</div>
+        }
+    </main>
+</div>

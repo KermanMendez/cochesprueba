@@ -1,0 +1,17 @@
+<div class="detalle-container">
+	<img class="detalle-foto" [src]="coche?.fotoURL || 'https://via.placeholder.com/400x220?text=Sin+Foto'" [alt]="(coche?.marca || '') + ' ' + (coche?.modelo || '')" />
+	<div class="detalle-marca">{{ coche?.marca }}</div>
+	<div class="detalle-modelo">{{ coche?.modelo }}</div>
+	<div class="detalle-tipos">
+		@for (tipo of coche?.tipo; track tipo) {
+			<span class="detalle-tipo">{{ tipo }}</span>
+		}
+	</div>
+	<div class="detalle-info">
+		<div><span class="detalle-label">Matrícula:</span> <span class="detalle-valor">{{ coche?.matricula }}</span></div>
+		<div><span class="detalle-label">Kilometraje:</span> <span class="detalle-valor">{{ coche?.kms }} km</span></div>
+		<div><span class="detalle-label">Precio:</span> <span class="detalle-valor">{{ coche?.precio }}€</span></div>
+		<div><span class="detalle-label">ID:</span> <span class="detalle-valor">{{ coche?.id }}</span></div>
+	</div>
+</div>
+
