@@ -1,6 +1,10 @@
 <div class="homepage-container">
-  <h1 class="homepage-title">CONCESIONARIO MULTIMARCA</h1>
+  <h1 class="homepage-title">{{ 'TITLE' | translate }}</h1>
   <img class="homepage-img" src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&w=800&q=80" alt="Concesionario">
-  <a class="homepage-btn" [routerLink]="['/coches']">ENTRAR</a>
+  <label for="username">{{ 'USERNAME' | translate }}</label>
+  <input type="text" id="username" placeholder="{{ 'USERNAME' | translate }}" #username />
+  <label for="password">{{ 'PASSWORD' | translate }}</label>
+  <input type="password" id="password" placeholder="{{ 'PASSWORD' | translate }}" #password />
+  <a class="homepage-btn" (click)="login(username.value, password.value)">{{ 'ENTRAR' | translate }}</a>
 </div>
 

@@ -1,1 +1,13 @@
+<div>
+    <app-change-languaje></app-change-languaje>
+    <nav class="navbar">
+        <a class="nav-link" [routerLink]="['/']">{{ 'HOME' | translate }}</a>
+        <a class="nav-link" [routerLink]="['/coches']">{{ 'COCHES' | translate }}</a>
+        @if (authService.currentUser()) {
+            <a class="nav-link" [routerLink]="['/']" (click)="authService.Logout()">{{ 'LOGOUT' | translate }}</a>
+        } @else {
+            <a class="nav-link" [routerLink]="['/']">{{ 'LOGIN' | translate }}</a>
+        }
+    </nav>  
+</div>
 <router-outlet />

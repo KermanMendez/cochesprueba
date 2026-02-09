@@ -3,10 +3,11 @@ import { Cocheremoteservice } from '../../services/cocheremoteservice';
 import { ICoche } from '../../icoche';
 import { RouterModule, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-coches',
-  imports: [RouterModule, RouterLink, CommonModule],
+  imports: [RouterModule, RouterLink, CommonModule, TranslatePipe],
   templateUrl: './coches.html',
   styleUrl: './coches.css',
 })

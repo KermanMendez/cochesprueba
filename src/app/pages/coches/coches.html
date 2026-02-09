@@ -2,21 +2,21 @@
 
 <div class="coches-layout">
     <aside class="coches-menu">
-        <label for="categoria-select">Categoría:</label>
+        <label for="categoria-select">{{ 'CATEGORY' | translate }}:</label>
         <select id="categoria-select" #categoria (change)="getCochesByType(categoria.value)">
-            <option value="">Todas</option>
-            <option value="SUV">SUV</option>
-            <option value="SEDAN">Sedán</option>
-            <option value="HATCHBACK">Hatchback</option>
-            <option value="DEPORTIVO">Deportivo</option>
-            <option value="ELECTRICO">Eléctrico</option>
-            <option value="DIESEL">Diésel</option>
-            <option value="HIBRIDO">Híbrido</option>
+            <option value="">{{ 'TODAS' | translate }}</option>
+            <option value="SUV">{{ 'CATEGORYSUV' | translate }}</option>
+            <option value="SEDAN">{{ 'CATEGORYSEDAN' | translate }}</option>
+            <option value="HATCHBACK">{{ 'CATEGORYHATCHBACK' | translate }}</option>
+            <option value="DEPORTIVO">{{ 'CATEGORYSPORT' | translate }}</option>
+            <option value="ELECTRICO">{{ 'CATEGORYELECTRIC' | translate }}</option>
+            <option value="DIESEL">{{ 'CATEGORYDIESEL' | translate }}</option>
+            <option value="HIBRIDO">{{ 'CATEGORYHYBRID' | translate }}</option>
 
         </select>
-        <label for="marca-select">Marca:</label>
+        <label for="marca-select">{{ 'BRAND' | translate }}:</label>
         <select id="marca-select" #marca (change)="getCochesByMarca(marca.value)">
-            <option value="">Todas</option>
+            <option value="">{{ 'TODAS' | translate }}</option>
             <option value="Toyota">Toyota</option>
             <option value="Ford">Ford</option>
             <option value="BMW">BMW</option>
@@ -25,10 +25,10 @@
             <option value="Chevrolet">Chevrolet</option>
             <option value="Nissan">Nissan</option>
         </select>
-        <button class="menu-btn" (click)="getFeaturedCoches()">Featured</button>
+        <button class="menu-btn" (click)="getFeaturedCoches()">{{ 'FEATURED' | translate }}</button>
     </aside>
     <main class="coches-main">
-        <h2 class="coches-header">SELECCIÓN</h2>
+        <h2 class="coches-header">{{ 'SELECTION' | translate }}</h2>
         @if (coches.length > 0) {
             <div class="coches-grid">
                 @for (coche of coches; track coche.id) {
@@ -47,7 +47,7 @@
                 }
             </div>
         } @else {
-            <div>No hay coches disponibles.</div>
+            <div>{{ 'NODISPONIBLES' | translate }}</div>
         }
     </main>
 </div>

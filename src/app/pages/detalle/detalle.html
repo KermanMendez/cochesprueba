@@ -1,7 +1,7 @@
 
 <div class="detalle-pantalla">
     <div class="detalle-col">
-        <a class="detalle-volver-btn" [routerLink]="['/coches']">Volver</a>
+        <a class="detalle-volver-btn" [routerLink]="['/coches']">{{ 'BACKBTN' | translate }}</a>
         <div class="detalle-container">
             <img class="detalle-foto" [src]="coche?.fotoURL || 'https://via.placeholder.com/400x220?text=Sin+Foto'" [alt]="(coche?.marca || '') + ' ' + (coche?.modelo || '')" />
             <div class="detalle-marca">{{ coche?.marca }}</div>
@@ -12,37 +12,39 @@
                 }
             </div>
             <div class="detalle-info">
-                <div><span class="detalle-label">Matrícula:</span> <span class="detalle-valor">{{ coche?.matricula }}</span></div>
-                <div><span class="detalle-label">Kilometraje:</span> <span class="detalle-valor">{{ coche?.kms }} km</span></div>
-                <div><span class="detalle-label">Precio:</span> <span class="detalle-valor">{{ coche?.precio }}€</span></div>
+                <div><span class="detalle-label">{{ 'MATRICULA' | translate }}:</span> <span class="detalle-valor">{{ coche?.matricula }}</span></div>
+                <div><span class="detalle-label">{{ 'KILOMETRAJE' | translate }}:</span> <span class="detalle-valor">{{ coche?.kms }} km</span></div>
+                <div><span class="detalle-label">{{ 'PRICE' | translate }}:</span> <span class="detalle-valor">{{ coche?.precio }}€</span></div>
             </div>
         </div>
     </div>
+    @if (isAdmin()) {
     <div class="editar-col">
-        <button class="eliminar-btn" (click)="deleteCocheById(coche?.id + '')">Eliminar</button>
+        <button class="eliminar-btn" (click)="deleteCocheById(coche?.id + '')">{{ 'DELETEBTN' | translate }}</button>
         <button class="editar-btn" (click)="mostrarFormulario = !mostrarFormulario">
-            {{ mostrarFormulario ? 'Ocultar edición' : 'Editar coche' }}
+            {{ mostrarFormulario ? ('OCULTAREDICION' | translate) : ('EDITARCOCHE' | translate) }}
         </button>
         @if (mostrarFormulario) {
             <div class="formulario-edicion">
-                <h3 class="form-title">Editar coche</h3>
+                <h3 class="form-title">{{ 'FORMTITLE' | translate }}</h3>
                 <form [formGroup]="cocheForm">
-                    <label for="id">ID</label><br>
+                    <label for="id">{{ 'ID' | translate }}</label><br>
                     <input id="id" formControlName="id" type="number"/><br><br>
-                    <label for="marca">Marca</label><br>
+                    <label for="marca">{{ 'MARCA' | translate }}</label><br>
                     <input id="marca" formControlName="marca" type="text"/><br><br>
-                    <label for="modelo">Modelo</label><br>
+                    <label for="modelo">{{ 'MODELO' | translate }}</label><br>
                     <input id="modelo" formControlName="modelo" type="text"/><br><br>
-                    <label for="matricula">Matrícula</label><br>
+                    <label for="matricula">{{ 'MATRICULA' | translate }}</label><br>
                     <input id="matricula" formControlName="matricula" type="text"/><br><br>
-                    <label for="kms">Kilometraje</label><br>
+                    <label for="kms">{{ 'KMS' | translate }}</label><br>
                     <input id="kms" formControlName="kms" type="number"/><br><br>
-                    <label for="precio">Precio</label><br>
+                    <label for="precio">{{ 'PRICE' | translate }}</label><br>
                     <input id="precio" formControlName="precio" type="number"/><br><br>
-                    <button (click)="onSubmit()">Modify</button>
+                    <button (click)="onSubmit()">{{ 'MODIFY' | translate }}</button>
                 </form>
             </div>
         }
     </div>
+}
 </div>
 

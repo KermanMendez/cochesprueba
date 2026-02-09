@@ -5,10 +5,12 @@ import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/route
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
+import { Auth } from '../../services/auth';
 
 @Component({
   selector: 'app-detalle',
-  imports: [CommonModule, RouterModule, RouterLink, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, RouterLink, ReactiveFormsModule, TranslatePipe],
   templateUrl: './detalle.html',
   styleUrl: './detalle.css',
 })
@@ -23,6 +25,7 @@ export class Detalle {
   private cocheService = inject(Cocheremoteservice);
   private fb = inject(FormBuilder);
   private router = inject(Router);
+  private authService = inject(Auth);
 
   constructor(){
     this.activatedRoute.params.subscribe((params) =>{
@@ -95,5 +98,9 @@ export class Detalle {
         console.log(`Delete operation for coche with id ${id} completed.`);
       }
     });
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
 }
